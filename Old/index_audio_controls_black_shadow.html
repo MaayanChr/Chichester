@@ -64,11 +64,6 @@ audio::-webkit-media-controls-timeline {
   box-shadow: 1px 1px 4px rgba(0,0,0,0.3);
   font-size: 1.2em;
 }
-
-audio {
-  width: 100% !important;
-  min-width: 200px;
-}
 </style><script>
 function skip(btn, seconds) {
   const audio = btn.closest('td').querySelector('audio');
@@ -78,7 +73,7 @@ function restart(btn) {
   const audio = btn.closest('td').querySelector('audio');
   audio.currentTime = 0;
 }
-</script><meta content="width=device-width, initial-scale=1.0" name="viewport"/></head></html><div dir="ltr">
+</script></head></html><div dir="ltr">
 <table border="1" cellpadding="8" style="
       border-collapse: collapse;
       width: 100%;
