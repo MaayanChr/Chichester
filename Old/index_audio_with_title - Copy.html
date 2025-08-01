@@ -69,13 +69,6 @@ audio {
   width: 100% !important;
   min-width: 200px;
 }
-
-thead th {
-  position: sticky;
-  top: 0;
-  background-color: #e0e0e0;
-  z-index: 2;
-}
 </style><meta content="width=device-width, initial-scale=1.0" name="viewport"/></head><body><script>
 let allAudios = [];
 
@@ -102,7 +95,7 @@ function restart(btn) {
   audio.currentTime = 0;
 }
 </script></body></html><div dir="ltr">
-<h2 style="text-align: center; font-family: sans-serif; margin-top: 30px;">הפרקים בקול אנושי לפי קולות</h2><div style="max-height: 600px; overflow-y: auto; border: 1px solid #ccc;"><table border="1" cellpadding="8" style="
+<h2 style="text-align: center; font-family: sans-serif; margin-top: 30px;">הפרקים בקול אנושי לפי קולות</h2><table border="1" cellpadding="8" style="
       border-collapse: collapse;
       width: 100%;
       text-align: center;
@@ -199,5 +192,5 @@ function restart(btn) {
 </audio><div class="audio-controls"><button onclick="skip(this, -5)">⏪</button><button onclick="restart(this)">🔁</button><button onclick="skip(this, 5)">⏩</button></div></div></td>
 </tr>
 </tbody>
-</table></div>
+</table>
 </div>
