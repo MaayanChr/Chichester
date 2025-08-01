@@ -1,203 +1,373 @@
-<html><head><style>
-audio {
-  width: 100%;
-  height: 45px;
-}
-audio::-webkit-media-controls-timeline {
-  height: 10px;
-}
-.audio-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.audio-controls {
-  margin-top: 5px;
-}
-.audio-controls button {
-  margin: 0 3px;
-  padding: 2px 6px;
-  font-size: 0.9em;
-}
+<html>
+  <head>
+    <style>
+      audio {
+        width: 100%;
+        height: 45px;
+      }
+      audio::-webkit-media-controls-timeline {
+        height: 10px;
+      }
+      .audio-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .audio-controls {
+        margin-top: 5px;
+      }
+      .audio-controls button {
+        margin: 0 3px;
+        padding: 2px 6px;
+        font-size: 0.9em;
+      }
 
-.audio-wrapper {
-  display: flex;
-  flex-direction: column-reverse;
-  align-items: center;
-}
-.audio-controls button {
-  margin: 0 3px;
-  padding: 3px 8px;
-  font-size: 1em;
-}
+      .audio-wrapper {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+      }
+      .audio-controls button {
+        margin: 0 3px;
+        padding: 3px 8px;
+        font-size: 1em;
+      }
 
-.audio-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.audio-controls {
-  background-color: transparent;
-  margin-top: 5px;
-}
-.audio-controls button {
-  background-color: white;
-  margin: 0 3px;
-  padding: 3px 8px;
-  font-size: 1em;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  cursor: pointer;
-}
+      .audio-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .audio-controls {
+        background-color: transparent;
+        margin-top: 5px;
+      }
+      .audio-controls button {
+        background-color: white;
+        margin: 0 3px;
+        padding: 3px 8px;
+        font-size: 1em;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        cursor: pointer;
+      }
 
-.audio-controls button {
-  background-color: transparent;
-  color: black;
-  border: none;
-  box-shadow: none;
-}
+      .audio-controls button {
+        background-color: transparent;
+        color: black;
+        border: none;
+        box-shadow: none;
+      }
 
-.audio-controls button {
-  background-color: transparent !important;
-  color: black !important;
-  border: none;
-  box-shadow: 1px 1px 4px rgba(0,0,0,0.3);
-  font-size: 1.2em;
-}
+      .audio-controls button {
+        background-color: transparent !important;
+        color: black !important;
+        border: none;
+        box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+        font-size: 1.2em;
+      }
 
-audio {
-  width: 100% !important;
-  min-width: 200px;
-}
+      audio {
+        width: 100% !important;
+        min-width: 200px;
+      }
 
-thead th {
-  position: sticky;
-  top: 0;
-  background-color: #e0e0e0;
-  z-index: 2;
-}
-</style><meta content="width=device-width, initial-scale=1.0" name="viewport"/></head><body><script>
-let allAudios = [];
+      thead th {
+        position: sticky;
+        top: 0;
+        background-color: #e0e0e0;
+        z-index: 2;
+      }
+    </style>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  </head>
+  <body>
+    <script>
+      let allAudios = [];
 
-window.addEventListener("DOMContentLoaded", function () {
-  allAudios = Array.from(document.querySelectorAll("audio"));
+      window.addEventListener("DOMContentLoaded", function () {
+        allAudios = Array.from(document.querySelectorAll("audio"));
 
-  allAudios.forEach(audio => {
-    audio.addEventListener("play", () => {
-      allAudios.forEach(other => {
-        if (other !== audio) {
-          other.pause();
-        }
+        allAudios.forEach((audio) => {
+          audio.addEventListener("play", () => {
+            allAudios.forEach((other) => {
+              if (other !== audio) {
+                other.pause();
+              }
+            });
+          });
+        });
       });
-    });
-  });
-});
 
-function skip(btn, seconds) {
-  const audio = btn.closest('td').querySelector('audio');
-  audio.currentTime += seconds;
-}
-function restart(btn) {
-  const audio = btn.closest('td').querySelector('audio');
-  audio.currentTime = 0;
-}
-</script></body></html><div dir="ltr">
-<h2 style="text-align: center; font-family: sans-serif; margin-top: 30px;">הפרקים בקול אנושי לפי קולות</h2><div style="max-height: 600px; overflow-y: auto; border: 1px solid #ccc;"><table border="1" cellpadding="8" style="
-      border-collapse: collapse;
-      width: 100%;
-      text-align: center;
-      font-family: sans-serif;
-    ">
-<thead>
-<tr style="background-color: #ddd; font-weight: bold">
-<th style="background-color: #ffcccc; white-space: nowrap">Part</th>
-<th style="background-color: #b2ebf2">S</th>
-<th style="background-color: #a5d6a7">A</th>
-<th style="background-color: #ffe082">T</th>
-<th style="background-color: #b39ddb">B</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="background-color: #ffcccc; white-space: nowrap">
-          Part 1 1st
-        </td>
-<td style="background-color: #b2ebf2">
-<div class="audio-wrapper"><audio controls="">
-<source src="4-S 01 Movement I – Soprano 1.mp3" type="audio/mpeg"/>
-</audio><div class="audio-controls"><button onclick="skip(this, -5)">⏪</button><button onclick="restart(this)">🔁</button><button onclick="skip(this, 5)">⏩</button></div></div></td>
-<td style="background-color: #a5d6a7">
-<div class="audio-wrapper"><audio controls="">
-<source src="4-A 01 Movement I – Alto 1.mp3" type="audio/mpeg"/>
-</audio><div class="audio-controls"><button onclick="skip(this, -5)">⏪</button><button onclick="restart(this)">🔁</button><button onclick="skip(this, 5)">⏩</button></div></div></td>
-<td style="background-color: #ffe082">
-<div class="audio-wrapper"><audio controls="">
-<source src="01 Movement I-Tenor 1.mp3" type="audio/mpeg"/>
-</audio><div class="audio-controls"><button onclick="skip(this, -5)">⏪</button><button onclick="restart(this)">🔁</button><button onclick="skip(this, 5)">⏩</button></div></div></td>
-<td style="background-color: #b39ddb">
-<div class="audio-wrapper"><audio controls="">
-<source src="4-B 01 Movement I  - Bass 1.mp3" type="audio/mpeg"/>
-</audio><div class="audio-controls"><button onclick="skip(this, -5)">⏪</button><button onclick="restart(this)">🔁</button><button onclick="skip(this, 5)">⏩</button></div></div></td>
-</tr>
-<tr>
-<td style="background-color: #ffcccc; white-space: nowrap">
-          Part 1 2nd
-        </td>
-<td style="background-color: #b2ebf2">
-<div class="audio-wrapper"><audio controls="">
-<source src="4-S 02 Movement I – Soprano 2.mp3" type="audio/mpeg"/>
-</audio><div class="audio-controls"><button onclick="skip(this, -5)">⏪</button><button onclick="restart(this)">🔁</button><button onclick="skip(this, 5)">⏩</button></div></div></td>
-<td style="background-color: #a5d6a7">
-<div class="audio-wrapper"><audio controls="">
-<source src="4-A 02 Movement I – Alto 2.mp3" type="audio/mpeg"/>
-</audio><div class="audio-controls"><button onclick="skip(this, -5)">⏪</button><button onclick="restart(this)">🔁</button><button onclick="skip(this, 5)">⏩</button></div></div></td>
-<td style="background-color: #ffe082">
-<div class="audio-wrapper"><audio controls="">
-<source src="02 Movement I-Tenor 2.mp3" type="audio/mpeg"/>
-</audio><div class="audio-controls"><button onclick="skip(this, -5)">⏪</button><button onclick="restart(this)">🔁</button><button onclick="skip(this, 5)">⏩</button></div></div></td>
-<td style="background-color: #b39ddb">
-<div class="audio-wrapper"><audio controls="">
-<source src="4-B 02 Movement I - Bass 2 .mp3" type="audio/mpeg"/>
-</audio><div class="audio-controls"><button onclick="skip(this, -5)">⏪</button><button onclick="restart(this)">🔁</button><button onclick="skip(this, 5)">⏩</button></div></div></td>
-</tr>
-<tr>
-<td style="background-color: #ffcccc; white-space: nowrap">Part 2</td>
-<td style="background-color: #b2ebf2">
-<div class="audio-wrapper"><audio controls="">
-<source src="4-S 03 Movement II – Soprano.mp3" type="audio/mpeg"/>
-</audio><div class="audio-controls"><button onclick="skip(this, -5)">⏪</button><button onclick="restart(this)">🔁</button><button onclick="skip(this, 5)">⏩</button></div></div></td>
-<td style="background-color: #a5d6a7">
-<div class="audio-wrapper"><audio controls="">
-<source src="4-A 03 Movement II – Alto.mp3" type="audio/mpeg"/>
-</audio><div class="audio-controls"><button onclick="skip(this, -5)">⏪</button><button onclick="restart(this)">🔁</button><button onclick="skip(this, 5)">⏩</button></div></div></td>
-<td style="background-color: #ffe082">
-<div class="audio-wrapper"><audio controls="">
-<source src="03 Movement II.mp3" type="audio/mpeg"/>
-</audio><div class="audio-controls"><button onclick="skip(this, -5)">⏪</button><button onclick="restart(this)">🔁</button><button onclick="skip(this, 5)">⏩</button></div></div></td>
-<td style="background-color: #b39ddb">
-<div class="audio-wrapper"><audio controls="">
-<source src="4-B 03 Movement II .mp3" type="audio/mpeg"/>
-</audio><div class="audio-controls"><button onclick="skip(this, -5)">⏪</button><button onclick="restart(this)">🔁</button><button onclick="skip(this, 5)">⏩</button></div></div></td>
-</tr>
-<tr>
-<td style="background-color: #ffcccc; white-space: nowrap">Part 3</td>
-<td style="background-color: #b2ebf2">
-<div class="audio-wrapper"><audio controls="">
-<source src="4-S 04 Movement III – Soprano.mp3" type="audio/mpeg"/>
-</audio><div class="audio-controls"><button onclick="skip(this, -5)">⏪</button><button onclick="restart(this)">🔁</button><button onclick="skip(this, 5)">⏩</button></div></div></td>
-<td style="background-color: #a5d6a7">
-<div class="audio-wrapper"><audio controls="">
-<source src="4-A 04Movement III – Alto.mp3" type="audio/mpeg"/>
-</audio><div class="audio-controls"><button onclick="skip(this, -5)">⏪</button><button onclick="restart(this)">🔁</button><button onclick="skip(this, 5)">⏩</button></div></div></td>
-<td style="background-color: #ffe082">
-<div class="audio-wrapper"><audio controls="">
-<source src="04 Movement III.mp3" type="audio/mpeg"/>
-</audio><div class="audio-controls"><button onclick="skip(this, -5)">⏪</button><button onclick="restart(this)">🔁</button><button onclick="skip(this, 5)">⏩</button></div></div></td>
-<td style="background-color: #b39ddb">
-<div class="audio-wrapper"><audio controls="">
-<source src="4-B 04 Movement III.mp3" type="audio/mpeg"/>
-</audio><div class="audio-controls"><button onclick="skip(this, -5)">⏪</button><button onclick="restart(this)">🔁</button><button onclick="skip(this, 5)">⏩</button></div></div></td>
-</tr>
-</tbody>
-</table></div>
+      function skip(btn, seconds) {
+        const audio = btn.closest("td").querySelector("audio");
+        audio.currentTime += seconds;
+      }
+      function restart(btn) {
+        const audio = btn.closest("td").querySelector("audio");
+        audio.currentTime = 0;
+      }
+    </script>
+  </body>
+</html>
+<div dir="ltr">
+  <h2 style="text-align: center; font-family: sans-serif; margin-top: 30px">
+    הפרקים בקול אנושי לפי כל הקולות
+  </h2>
+  <div style="max-height: 600px; overflow-y: auto; border: 1px solid #ccc">
+    <table
+      border="1"
+      cellpadding="8"
+      style="
+        border-collapse: collapse;
+        width: 100%;
+        text-align: center;
+        font-family: sans-serif;
+      "
+    >
+      <thead>
+        <tr style="background-color: #ddd; font-weight: bold">
+          <th style="background-color: #ffcccc; white-space: nowrap">Part</th>
+          <th style="background-color: #b2ebf2">S</th>
+          <th style="background-color: #a5d6a7">A</th>
+          <th style="background-color: #ffe082">T</th>
+          <th style="background-color: #b39ddb">B</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="background-color: #ffcccc; white-space: nowrap">
+            Part 1 1st
+          </td>
+          <td style="background-color: #b2ebf2">
+            <div class="audio-wrapper">
+              <audio controls="">
+                <source
+                  src="4-S 01 Movement I – Soprano 1.mp3"
+                  type="audio/mpeg"
+                />
+              </audio>
+              <div class="audio-controls">
+                <button onclick="skip(this, -5)">⏪</button
+                ><button onclick="restart(this)">🔁</button
+                ><button onclick="skip(this, 5)">⏩</button>
+              </div>
+            </div>
+          </td>
+          <td style="background-color: #a5d6a7">
+            <div class="audio-wrapper">
+              <audio controls="">
+                <source
+                  src="4-A 01 Movement I – Alto 1.mp3"
+                  type="audio/mpeg"
+                />
+              </audio>
+              <div class="audio-controls">
+                <button onclick="skip(this, -5)">⏪</button
+                ><button onclick="restart(this)">🔁</button
+                ><button onclick="skip(this, 5)">⏩</button>
+              </div>
+            </div>
+          </td>
+          <td style="background-color: #ffe082">
+            <div class="audio-wrapper">
+              <audio controls="">
+                <source src="01 Movement I-Tenor 1.mp3" type="audio/mpeg" />
+              </audio>
+              <div class="audio-controls">
+                <button onclick="skip(this, -5)">⏪</button
+                ><button onclick="restart(this)">🔁</button
+                ><button onclick="skip(this, 5)">⏩</button>
+              </div>
+            </div>
+          </td>
+          <td style="background-color: #b39ddb">
+            <div class="audio-wrapper">
+              <audio controls="">
+                <source
+                  src="4-B 01 Movement I  - Bass 1.mp3"
+                  type="audio/mpeg"
+                />
+              </audio>
+              <div class="audio-controls">
+                <button onclick="skip(this, -5)">⏪</button
+                ><button onclick="restart(this)">🔁</button
+                ><button onclick="skip(this, 5)">⏩</button>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #ffcccc; white-space: nowrap">
+            Part 1 2nd
+          </td>
+          <td style="background-color: #b2ebf2">
+            <div class="audio-wrapper">
+              <audio controls="">
+                <source
+                  src="4-S 02 Movement I – Soprano 2.mp3"
+                  type="audio/mpeg"
+                />
+              </audio>
+              <div class="audio-controls">
+                <button onclick="skip(this, -5)">⏪</button
+                ><button onclick="restart(this)">🔁</button
+                ><button onclick="skip(this, 5)">⏩</button>
+              </div>
+            </div>
+          </td>
+          <td style="background-color: #a5d6a7">
+            <div class="audio-wrapper">
+              <audio controls="">
+                <source
+                  src="4-A 02 Movement I – Alto 2.mp3"
+                  type="audio/mpeg"
+                />
+              </audio>
+              <div class="audio-controls">
+                <button onclick="skip(this, -5)">⏪</button
+                ><button onclick="restart(this)">🔁</button
+                ><button onclick="skip(this, 5)">⏩</button>
+              </div>
+            </div>
+          </td>
+          <td style="background-color: #ffe082">
+            <div class="audio-wrapper">
+              <audio controls="">
+                <source src="02 Movement I-Tenor 2.mp3" type="audio/mpeg" />
+              </audio>
+              <div class="audio-controls">
+                <button onclick="skip(this, -5)">⏪</button
+                ><button onclick="restart(this)">🔁</button
+                ><button onclick="skip(this, 5)">⏩</button>
+              </div>
+            </div>
+          </td>
+          <td style="background-color: #b39ddb">
+            <div class="audio-wrapper">
+              <audio controls="">
+                <source
+                  src="4-B 02 Movement I - Bass 2 .mp3"
+                  type="audio/mpeg"
+                />
+              </audio>
+              <div class="audio-controls">
+                <button onclick="skip(this, -5)">⏪</button
+                ><button onclick="restart(this)">🔁</button
+                ><button onclick="skip(this, 5)">⏩</button>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #ffcccc; white-space: nowrap">Part 2</td>
+          <td style="background-color: #b2ebf2">
+            <div class="audio-wrapper">
+              <audio controls="">
+                <source
+                  src="4-S 03 Movement II – Soprano.mp3"
+                  type="audio/mpeg"
+                />
+              </audio>
+              <div class="audio-controls">
+                <button onclick="skip(this, -5)">⏪</button
+                ><button onclick="restart(this)">🔁</button
+                ><button onclick="skip(this, 5)">⏩</button>
+              </div>
+            </div>
+          </td>
+          <td style="background-color: #a5d6a7">
+            <div class="audio-wrapper">
+              <audio controls="">
+                <source src="4-A 03 Movement II – Alto.mp3" type="audio/mpeg" />
+              </audio>
+              <div class="audio-controls">
+                <button onclick="skip(this, -5)">⏪</button
+                ><button onclick="restart(this)">🔁</button
+                ><button onclick="skip(this, 5)">⏩</button>
+              </div>
+            </div>
+          </td>
+          <td style="background-color: #ffe082">
+            <div class="audio-wrapper">
+              <audio controls="">
+                <source src="03 Movement II.mp3" type="audio/mpeg" />
+              </audio>
+              <div class="audio-controls">
+                <button onclick="skip(this, -5)">⏪</button
+                ><button onclick="restart(this)">🔁</button
+                ><button onclick="skip(this, 5)">⏩</button>
+              </div>
+            </div>
+          </td>
+          <td style="background-color: #b39ddb">
+            <div class="audio-wrapper">
+              <audio controls="">
+                <source src="4-B 03 Movement II .mp3" type="audio/mpeg" />
+              </audio>
+              <div class="audio-controls">
+                <button onclick="skip(this, -5)">⏪</button
+                ><button onclick="restart(this)">🔁</button
+                ><button onclick="skip(this, 5)">⏩</button>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #ffcccc; white-space: nowrap">Part 3</td>
+          <td style="background-color: #b2ebf2">
+            <div class="audio-wrapper">
+              <audio controls="">
+                <source
+                  src="4-S 04 Movement III – Soprano.mp3"
+                  type="audio/mpeg"
+                />
+              </audio>
+              <div class="audio-controls">
+                <button onclick="skip(this, -5)">⏪</button
+                ><button onclick="restart(this)">🔁</button
+                ><button onclick="skip(this, 5)">⏩</button>
+              </div>
+            </div>
+          </td>
+          <td style="background-color: #a5d6a7">
+            <div class="audio-wrapper">
+              <audio controls="">
+                <source src="4-A 04Movement III – Alto.mp3" type="audio/mpeg" />
+              </audio>
+              <div class="audio-controls">
+                <button onclick="skip(this, -5)">⏪</button
+                ><button onclick="restart(this)">🔁</button
+                ><button onclick="skip(this, 5)">⏩</button>
+              </div>
+            </div>
+          </td>
+          <td style="background-color: #ffe082">
+            <div class="audio-wrapper">
+              <audio controls="">
+                <source src="04 Movement III.mp3" type="audio/mpeg" />
+              </audio>
+              <div class="audio-controls">
+                <button onclick="skip(this, -5)">⏪</button
+                ><button onclick="restart(this)">🔁</button
+                ><button onclick="skip(this, 5)">⏩</button>
+              </div>
+            </div>
+          </td>
+          <td style="background-color: #b39ddb">
+            <div class="audio-wrapper">
+              <audio controls="">
+                <source src="4-B 04 Movement III.mp3" type="audio/mpeg" />
+              </audio>
+              <div class="audio-controls">
+                <button onclick="skip(this, -5)">⏪</button
+                ><button onclick="restart(this)">🔁</button
+                ><button onclick="skip(this, 5)">⏩</button>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
